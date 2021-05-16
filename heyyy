@@ -1,0 +1,105 @@
+local plr = game.Players.ky4ko
+plr.Chatted:Connect(function(msg)
+    if msg:lower() == "/bomball" then
+        for i, v in pairs(game.Players:GetPlayers()) do
+            tool = v.Backpack:FindFirstChild "ImpulseGrenade" or v.Character:FindFirstChild "ImpulseGrenade"
+            if tool then
+                break
+            end
+        end
+        for i, v in pairs(game.Players:GetPlayers()) do
+            if v ~= game.Players.ky4ko then
+                if v ~= game.Players.Velcorii then
+                    pcall(function()
+                        tool.CreateGrenade:FireServer(Vector3.new(0, 0, 0), CFrame.new(v.Character.HumanoidRootPart.Position.X, v.Character.HumanoidRootPart.Position.Y, v.Character.HumanoidRootPart.Position.Z))
+                    end)
+                end
+            end
+        end
+    end
+end)
+
+plr.Chatted:Connect(function(msg)
+    if msg:lower() == "/invisible" then
+        local tool
+        for i, v in pairs(game.Players:GetPlayers()) do
+            tool = v.Backpack:FindFirstChild "OddPotion" or v.Character:FindFirstChild "OddPotion"
+            if tool then
+                break
+            end
+        end
+        for i, v in pairs(game:GetService("Players").ky4ko.Character:GetDescendants()) do
+            if v.Name ~= "HumanoidRootPart" then
+                tool.TransEvent:FireServer(v, 1)
+            end
+        end
+    end
+end)
+
+plr.Chatted:Connect(function(msg)
+    if msg:lower() == "/visible" then
+        local tool
+        for i, v in pairs(game.Players:GetPlayers()) do
+            tool = v.Backpack:FindFirstChild "OddPotion" or v.Character:FindFirstChild "OddPotion"
+            if tool then
+                break
+            end
+        end
+        for i, v in pairs(game:GetService("Players").ky4ko.Character:GetDescendants()) do
+            if v.Name ~= "HumanoidRootPart" then
+                tool.TransEvent:FireServer(v, 0)
+            end
+        end
+    end
+end)
+
+plr.Character.ChildAdded:Connect(function(push)
+    if push.Name == "Push" then
+        for i=1,15 do wait(.5)
+            for i, v in pairs(game.Players:GetPlayers()) do
+                tool = v.Backpack:FindFirstChild "ImpulseGrenade" or v.Character:FindFirstChild "ImpulseGrenade"
+                if tool then
+                    break
+                end
+            end
+            tool.CreateGrenade:FireServer(Vector3.new(0, 0, 0), CFrame.new(plr.Character.HumanoidRootPart.Position.X, plr.Character.HumanoidRootPart.Position.Y, plr.Character.HumanoidRootPart.Position.Z))
+        end
+    end
+end)
+plr.CharacterAdded:Connect(function()
+    plr.Character.ChildAdded:Connect(function(push)
+        if push.Name == "Push" then
+            for i=1,15 do wait(.5)
+                for i, v in pairs(game.Players:GetPlayers()) do
+                    tool = v.Backpack:FindFirstChild "ImpulseGrenade" or v.Character:FindFirstChild "ImpulseGrenade"
+                        if tool then
+                            break
+                        end
+                    end
+                tool.CreateGrenade:FireServer(Vector3.new(0, 0, 0), CFrame.new(plr.Character.HumanoidRootPart.Position.X, plr.Character.HumanoidRootPart.Position.Y, plr.Character.HumanoidRootPart.Position.Z))
+            end
+        end
+    end)
+end)
+
+plr.Chatted:Connect(function(msg)
+    if msg:lower() == "/crash" then
+        for i = 1, 1000 do wait(.1)
+            for i, v in pairs(game.Players:GetPlayers()) do
+                tool = v.Backpack:FindFirstChild "ImpulseGrenade" or v.Character:FindFirstChild "ImpulseGrenade"
+                if tool then
+                    break
+                end
+            end
+            for i, v in pairs(game.Players:GetPlayers()) do
+                if v ~= game.Players.ky4ko then
+                    if v ~= game.Players.Velcorii then
+                        pcall(function()
+                            tool.CreateGrenade:FireServer(Vector3.new(0, 0, 0), CFrame.new(v.Character.HumanoidRootPart.Position.X, v.Character.HumanoidRootPart.Position.Y, v.Character.HumanoidRootPart.Position.Z))
+                        end)
+                    end
+                end
+            end
+        end
+    end
+end)
